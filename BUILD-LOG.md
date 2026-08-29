@@ -38,26 +38,44 @@ This file records the build so another AI can reproduce the work and Ian can see
 
 **Why:** This creates the actual workflow we wanted: **pick slots → copy link → paste into WhatsApp/Messenger/email/SpareRoom**.
 
-**Limitation:** This is still a prototype. Bookings are not yet stored centrally, so two people could theoretically choose the same slot. We will solve that only after the workflow proves useful.
+---
+
+## 04 — Close the loop via WhatsApp
+
+**Goal:** Make the tenant's selected time useful to Ian while keeping the existing communication channel.
+
+**Action:** Updated `index.html` so it reads the generated URL parameters and displays only the supplied property/days/times. After the tenant chooses a slot and enters their name, the confirmation screen now has **Tell Ian on WhatsApp**.
+
+**Behaviour:** The button opens WhatsApp with a pre-filled message containing the tenant name, property, day and selected time.
+
+**Why:** This is the smallest next step that tests the full journey without prematurely building a backend.
+
+**Important limitation:** There is still no shared booking database. The WhatsApp message is the handoff, not a central booking record. Double-booking is therefore still possible.
 
 ---
 
-## CURRENT STATE
+# CURRENT STATE
 
 🟢 Tenant-facing page exists.  
 🟢 Ian can generate a viewing link.  
-🟢 Link can be copied and shared.  
-🟡 Booking is simulated locally; no shared booking database yet.  
+🟢 Generated link controls the tenant's available slots.  
+🟢 Tenant can choose a slot and hand the choice back to Ian via WhatsApp.  
+🟡 Booking is not yet stored centrally.  
 
-## NEXT
+# NEXT
 
-**Test the complete workflow on iPhone:**
+**05 — Real shared booking.**
 
-1. Open `create.html`.
-2. Create a set of viewing slots.
-3. Copy the generated link.
-4. Open the link as if you were the tenant.
-5. Choose a slot and confirm.
-6. Decide what feels wrong or missing.
+Add only the smallest possible shared storage mechanism so a tenant's selection becomes a booking Ian can see from another device. Preserve the existing WhatsApp workflow unless real-world testing proves it should change.
 
-**Rule:** Do not add features just because they seem useful. Add the next thing because the real workflow proves we need it.
+# REPRODUCTION CONTRACT
+
+When another AI takes over:
+
+1. Read `README.md`.
+2. Read this `BUILD-LOG.md`.
+3. Inspect the current `index.html` and `create.html` before changing anything.
+4. Preserve the working tenant journey.
+5. Make one numbered step at a time.
+6. Document what changed, why, technical approach and limitations.
+7. Keep **Mac = 🔵 BUILD**, **iPhone = 🟢 TEST**, **Ian = 🟡 DECIDE**.
