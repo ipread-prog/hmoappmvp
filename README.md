@@ -1,52 +1,67 @@
 # 🏠 HMO Viewing MVP
 
-## 🧠 WHERE WE ARE
+# 🧠 WHERE WE ARE
 
 **Project:** HMO Viewing Link  
-**Stage:** 01 — Tiny prototype
+**Current step:** **04 — Close the loop**
 
-### 🎯 WHY ARE WE HERE?
+## 🎯 WHY ARE WE HERE?
 
-A potential tenant wants to view an HMO room. Today this can create annoying WhatsApp / Messenger / email back-and-forth.
+A potential tenant wants to view an HMO room. The aim is to replace the back-and-forth with:
 
-We are testing one tiny idea:
+**Message → Link → Choose time → Tell Ian**
 
-**Message → Link → Choose viewing time → Confirmed**
+We are deliberately building the smallest useful thing first.
 
-### 🟢 WHAT WE DID LAST
+## 🗺️ ROADMAP
 
-We deliberately reduced the project to the smallest useful MVP.
+1. **Foundation** ✅ GitHub + project memory
+2. **Tenant screen** ✅ Choose a viewing time
+3. **Create link** ✅ Ian selects times + copies link
+4. **Close the loop** 🔵 **NOW** — tenant choice is turned into a ready-made WhatsApp message
+5. **Real shared booking** ⏭️ Store bookings centrally
+6. **Collision protection** ⏭️ Prevent double booking
+7. **Confirmation** ⏭️ Proper confirmation for both sides
+8. **Real-world test** ⏭️ Use with actual applicants
+9. **Only then** decide what else is worth building
 
-No AI. No database. No WhatsApp integration. No accounts. No giant HMO system.
+## 🔵 MAC / BUILD
 
-### 🔵 WHAT WE ARE BUILDING NOW
+The MacBook is where the project is built and changed.
 
-A simple page where Ian can offer a few viewing times and a prospective tenant can choose one.
+## 🟢 iPHONE / TEST
 
-### 👉 WHAT HAPPENS NEXT
+The iPhone is where the experience is tested as a real tenant/user.
 
-1. Make the prototype work.
-2. Look at it visually.
-3. Test the tenant journey.
-4. Use it with a real viewing.
-5. Only then decide what needs improving.
+## 🟡 YOU / DECIDE
 
-### 🚫 NOT NOW
+Ian judges what feels useful, awkward or unnecessary. Technical implementation stays with the AI unless Ian explicitly wants to do it.
 
-- AI
-- Calendar integrations
-- WhatsApp/Messenger integrations
-- Login/accounts
-- Payments
-- Multi-property management
-- Complex backend
+## 🟢 WHAT WE DID THIS STEP
 
-## The rule
+- Made the tenant page read the viewing details and times from the generated link.
+- Added a final **Tell Ian on WhatsApp** button.
+- The button creates a ready-made WhatsApp message containing the tenant name, property, day and selected time.
+- Kept the existing WhatsApp conversation as the communication channel.
+
+## ⚠️ IMPORTANT LIMITATION
+
+This is **not yet a true shared booking database**. The WhatsApp handoff proves the end-to-end user journey without adding a backend. A central booking system is Step 05.
+
+## 🧪 TEST
+
+1. On Mac: open `create.html` and generate a link.
+2. Send/copy that link to the iPhone.
+3. On iPhone: choose a time and enter a name.
+4. Tap **Tell Ian on WhatsApp**.
+5. Check the WhatsApp message before sending it.
+
+## 🧠 RULE
 
 > **Reality before architecture.**
 
-Build the smallest thing that solves the real problem, test it, then learn.
+Build → experience → learn → then add infrastructure only when the real problem is proven.
 
-## AI-agnostic
+## 🤖 AI-AGNOSTIC
 
-This project is deliberately portable. The files in this repository are the source of truth, not any single AI conversation. ChatGPT, Claude, Grok or another tool should be able to pick up the project from this README.
+The repository is the source of truth. Any AI should read this README before working. Important changes should be documented here or in the build log so the project can move between ChatGPT, Claude, Grok or another tool.
