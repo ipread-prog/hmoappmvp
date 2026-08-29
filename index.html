@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HMO Viewing — MVP</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;color:#172033;background:#f5f7fb}*{box-sizing:border-box}body{margin:0}.wrap{max-width:520px;margin:0 auto;padding:28px 18px 40px}.card{background:white;border:1px solid #e3e7ef;border-radius:22px;padding:24px;box-shadow:0 8px 30px #17203312}.eyebrow{font-size:13px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.08em}.title{font-size:30px;line-height:1.1;margin:8px 0}.sub{color:#687386;line-height:1.5;margin:0 0 24px}.day{font-weight:750;margin:22px 0 10px}.slots{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.slot{border:1.5px solid #d9deea;background:#fff;border-radius:14px;padding:15px 10px;font-size:17px;font-weight:700;cursor:pointer}.slot:hover{border-color:#315efb}.slot.selected{border-color:#315efb;background:#eef3ff;color:#244bd0}.continue{width:100%;border:0;border-radius:14px;padding:16px;margin-top:24px;background:#315efb;color:#fff;font-size:17px;font-weight:750;cursor:pointer}.continue:disabled{background:#cbd1dc;cursor:not-allowed}.form{display:none;margin-top:20px}.form.show{display:block}.label{font-size:14px;font-weight:700;margin-bottom:7px;display:block}.input{width:100%;padding:14px;border:1px solid #d9deea;border-radius:12px;font-size:16px}.confirm{margin-top:12px}.success{display:none;text-align:center}.success.show{display:block}.tick{font-size:44px}.small{font-size:13px;color:#7a8494;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<div id="booking">
+<div class="eyebrow">Room viewing</div>
+<h1 class="title">Choose a viewing time</h1>
+<p class="sub">14 Example Street<br>20-minute viewing</p>
+<div class="day">Saturday</div><div class="slots">
+<button class="slot" data-time="10:00">10:00</button><button class="slot" data-time="10:30">10:30</button><button class="slot" data-time="11:30">11:30</button><button class="slot" data-time="12:00">12:00</button>
+</div>
+<div class="day">Monday</div><div class="slots">
+<button class="slot" data-time="16:00">16:00</button><button class="slot" data-time="16:30">16:30</button><button class="slot" data-time="17:30">17:30</button><button class="slot" data-time="18:00">18:00</button>
+</div>
+<button id="continue" class="continue" disabled>Choose a time</button>
+<div id="form" class="form"><label class="label" for="name">Your name</label><input id="name" class="input" autocomplete="name" placeholder="e.g. Sarah Smith"><button id="confirm" class="continue confirm">Confirm viewing</button></div>
+</div>
+<div id="success" class="success"><div class="tick">✓</div><h1 class="title">Viewing confirmed</h1><p id="confirmation" class="sub"></p><p class="small">You can now close this page.</p></div>
+</div></div>
+<script>
+let selected=null;const slots=document.querySelectorAll('.slot'),cont=document.getElementById('continue'),form=document.getElementById('form');slots.forEach(s=>s.onclick=()=>{slots.forEach(x=>x.classList.remove('selected'));s.classList.add('selected');selected=s.dataset.time;cont.disabled=false;cont.textContent='Continue with '+selected});cont.onclick=()=>{form.classList.add('show');document.getElementById('name').focus()};document.getElementById('confirm').onclick=()=>{const name=document.getElementById('name').value.trim();if(!name){document.getElementById('name').focus();return}document.getElementById('booking').style.display='none';document.getElementById('success').classList.add('show');document.getElementById('confirmation').textContent=`${name}, your viewing is booked for ${selected}.`};
+</script>
+</body></html>
